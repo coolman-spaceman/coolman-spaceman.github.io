@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Dibyayoti Jena</title>
+    <link>https://coolman-spaceman.github.io/</link>
+    <description>Recent content in Home on Dibyayoti Jena</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Jun 2023 15:57:15 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Post One</title>
+      <link>https://coolman-spaceman.github.io/posts/post1/</link>
+      <pubDate>Mon, 19 Jun 2023 15:57:15 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/post1/</guid>
+      <description>This is official post one. We will include some code here, syntax highlighting etc.</description>
+    </item>
+    
+    <item>
+      <title>Post Zero</title>
+      <link>https://coolman-spaceman.github.io/posts/post0/</link>
+      <pubDate>Mon, 19 Jun 2023 15:56:46 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/post0/</guid>
+      <description>Ok this is the first post, lets see if we can include some math here lol
+$$ (1 + 1)^2 = 4 $$
+Heading one I like Bold Text.
+\begin{equation} \begin{pmatrix} 1 &amp;amp; x^1_0 &amp;amp; x^2_0 &amp;amp; \cdots &amp;amp; x^{degree}_0 \\ 1 &amp;amp; x^1_1 &amp;amp; x^2_1 &amp;amp; \cdots &amp;amp; x^{degree}_1 \\ \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ 1 &amp;amp; x^1_n &amp;amp; x^2_n &amp;amp; \cdots &amp;amp; x^{degree}_n \\ \end{pmatrix} \end{equation} \begin{equation} \frac{a}{b} \end{equation}</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://coolman-spaceman.github.io/about/</link>
+      <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/about/</guid>
+      <description>Here is some content, this is all in markdown!
+This is a list:
+ List item qqqqq wwwww   name address  Hello noobs, I am Dibyajyoti Jena, working my way to stay away from Roko&amp;rsquo;s Basilisk.</description>
+    </item>
+    
+  </channel>
+</rss>

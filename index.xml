@@ -35,9 +35,9 @@ Heading one I like Bold Text.
       <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://coolman-spaceman.github.io/about/</guid>
-      <description>Here is some content, this is all in markdown!
-This is a list:
- List item qqqqq wwwww   name address  Hello noobs, I am Dibyajyoti Jena, working my way to stay away from Roko&amp;rsquo;s Basilisk.</description>
+      <description>Hello visitor, I am Dibyajyoti Jena, working my way to stay away from Roko&amp;rsquo;s Basilisk.
+My undergrad was from IIIT Bhubaneswar, India, in Electronics and Communication (2021), where I learnt my love for good code. I am now persuing a masters in Communication Engineering.
+On the lookout for employment opportunities/internships in the mixed fields of machine learning, deep learning or signal processing and communication. Any future employers are welcome drop a mail at dibyajyotijena47@gmail.</description>
     </item>
     
   </channel>

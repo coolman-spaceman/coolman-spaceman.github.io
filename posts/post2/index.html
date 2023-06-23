@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Practical Guide On Training Custom Yolo V3 Model | Dibyajyoti Jena</title>
+<meta property="og:title" content="Practical Guide On Training Custom Yolo V3 Model | Dibyajyoti Jena" />
+<meta name="twitter:title" content="Practical Guide On Training Custom Yolo V3 Model | Dibyajyoti Jena" />
+<meta itemprop="name" content="Practical Guide On Training Custom Yolo V3 Model | Dibyajyoti Jena" />
+<meta name="application-name" content="Practical Guide On Training Custom Yolo V3 Model | Dibyajyoti Jena" />
+<meta property="og:site_name" content="Awesome hugo blog" />
+
+<meta name="description" content="Minimal Hugo blog theme with light and dark mode support">
+<meta itemprop="description" content="Minimal Hugo blog theme with light and dark mode support" />
+<meta property="og:description" content="Minimal Hugo blog theme with light and dark mode support" />
+<meta name="twitter:description" content="Minimal Hugo blog theme with light and dark mode support" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="https://coolman-spaceman.github.io/" />
+  <meta property="og:image" content="https://coolman-spaceman.github.io/" />
+  <meta name="twitter:image" content="https://coolman-spaceman.github.io/" />
+  <meta name="twitter:image:src" content="https://coolman-spaceman.github.io/" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-06-23T09:56:43&#43;0530 />
+    <meta property="article:published_time" content=2023-06-23T09:56:43&#43;0530 />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Practical Guide On Training Custom Yolo V3 Model",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2023-06-23",
+        "description": "",
+        "wordCount":  1104 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2023-06-23",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Dibyajyoti Jena"
+        }
+    }
+    </script>
+
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+
+  <link rel="canonical" href="https://coolman-spaceman.github.io/posts/post2/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    </head><body data-theme = "dark" class="notransition">
+<script src="https://coolman-spaceman.github.io/js/themeLoader.min.0ea9375d525d6f19779c6d41cfaf9e166e47014d9734ff071daad3a4ff12d147.js"></script><div class="navbar" role="navigation">
+  <nav class="menu" aria-label="Main Navigation">
+    <a href="/" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+    </a>
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <label for="menu-trigger">
+      <span class="menu-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+      </span>
+    </label>
+
+    <div class="trigger">
+      <ul class="trigger-container">
+        
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/">
+            Home
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link active"
+            href="/posts/">
+            Posts
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/projects/">
+            Projects
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/publications/">
+            Publications
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/lectures/">
+            ML Lectures
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/about/">
+            About
+            </a>
+            
+          </li>
+        
+        <li class="menu-separator">
+          <span>|</span>
+        </li>
+      </ul>
+      <a id="mode" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Practical Guide On Training Custom Yolo V3 Model</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2023-06-23T09:56:43&#43;05:30" itemprop="datePublished"> Jun 23, 2023 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <figure>
+  <p align="center"><img class=scaled src="/img1.jpg">
+  <figcaption>Darknet Logo</figcaption>
+</figure>
+<p>The YOLO architecture is very similar to any conventional CNN, but training YOLO from scratch for custom images is still a mystery for many. One of the reasons is the initial training dataset problem, we have to annotate each image for its bounding boxes. Then modify the configuration file according to the number of classes we are training for. <strong>This tutorial is the best for those who want to start out on YOLO without much coding experience or even knowledge of convolutional neural networks. We will train the model on Google colab and test it on our local system.</strong></p>
+<p>Before we begin, we have to understand that YOLO is a fully convolutional neural network, which means it has no dense layers. It detects objects in just one iteration and calculates coordinates of their bounding boxes as a regression task. Let’s get into the code and see how to get things working.</p>
+<p><strong>Problem statement</strong>: Suppose we have to classify 3 objects along with their bounding boxes.</p>
+<blockquote>
+<p><strong>Creating dataset:</strong></p>
+</blockquote>
+<p>First we have to create a dataset by annotating them and storing them all in one folder.</p>
+<p>For Windows or Linux users, download and install <strong>LabelImg</strong>. Import the folder containing all images into the workspace. Make sure the <strong>yolo</strong> tag is on. If not, change from PascalVOC to yolo. We need to go through each image and draw a rectangular bounding box around the object. A .txt file containing the label and box coordinates is generated. Make sure the label is correct. Save the txt file in the same folder as the image file.</p>
+<p>Repeat this for all the images. Since we will use yolo-tiny version, about 50 images in each class should be enough. There might be a label.txt file that gets generated too, delete it!</p>
+<p>Zip the folder containing the images and their annotation text files, and upload it to your Google Drive under a <strong>yolov3 folder</strong> under the name <strong>image.zip</strong>.</p>
+<blockquote>
+<p><strong>Colab settings:</strong></p>
+</blockquote>
+<p>Open a Colab notebook. Under Edit &gt; Notebook settings, set Hardware accelerator as GPU.</p>
+<p>Check if NVIDIA GPU is enabled with the following command in a code cell:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
+</code></pre></div><p>Most probably it will be a Tesla T4 GPU allocated.</p>
+<p>Mount the Google Drive in which the zip file is stored with the following code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive&#39;</span><span class="p">)</span>
+<span class="err">!</span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">gdrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span> <span class="o">/</span><span class="n">mydrive</span>
+</code></pre></div><p>Go to the generated link, choose the correct drive, copy the generated code and paste the code where prompted. Hit enter to proceed.</p>
+<p>Your Google drive is now mounted on the colab system. Clone Darknet yolo architecture into the colab system:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">AlexeyAB</span><span class="o">/</span><span class="n">darknet</span>
+</code></pre></div><p>Compile Darknet and enable OpenCV, GPU use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">%</span><span class="n">cd</span> <span class="n">darknet</span>
+<span class="err">!</span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/OPENCV=0/OPENCV=1/&#39;</span> <span class="n">Makefile</span>
+<span class="err">!</span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/GPU=0/GPU=1/&#39;</span> <span class="n">Makefile</span>
+<span class="err">!</span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/CUDNN=0/CUDNN=1/&#39;</span> <span class="n">Makefile</span>
+<span class="err">!</span><span class="n">make</span>
+</code></pre></div><p>Specify train, test files and class names</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># My class names are cirle, square, cylinder</span>
+<span class="err">!</span><span class="n">echo</span> <span class="s2">&#34;circle&#34;</span><span class="p">,</span><span class="s2">&#34;square&#34;</span><span class="p">,</span><span class="s2">&#34;cylinder&#34;</span><span class="o">&gt;</span> <span class="n">data</span><span class="o">/</span><span class="n">obj</span><span class="o">.</span><span class="n">names</span>
+<span class="err">!</span><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;classes= 3</span><span class="se">\n</span><span class="s1">train  = data/train.txt</span><span class="se">\n</span><span class="s1">valid  = data/test.txt</span><span class="se">\n</span><span class="s1">names = data/obj.names</span><span class="se">\n</span><span class="s1">backup = /mydrive/yolov3&#39;</span> <span class="o">&gt;</span> <span class="n">data</span><span class="o">/</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span>
+<span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">obj</span>
+</code></pre></div><p>Check on the files button on the left dashboard, under Darknet &gt; data there should be a ‘obj.names’ file. Double click on it and open it. If the class names are in a single row, change them to one row per name, ctrl + s to save.</p>
+<p>Unzip images from Google Drive:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span><span class="n">unzip</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">gdrive</span><span class="o">/</span><span class="n">MyDrive</span><span class="o">/</span><span class="n">yolov3</span><span class="o">/</span><span class="n">image</span><span class="o">.</span><span class="n">zip</span> <span class="o">-</span><span class="n">d</span> <span class="n">data</span><span class="o">/</span><span class="n">obj</span>
+</code></pre></div><p>Re-label annotation text files</p>
+<p>The annotation files have string labels in them. We need to convert them into numerical format.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+ 
+<span class="n">txt_file_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;/content/darknet/data/obj/image/*.txt&#34;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">txt_file_paths</span><span class="p">):</span>
+ <span class="c1"># get image size</span>
+ <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_o</span><span class="p">:</span>
+       <span class="n">lines</span> <span class="o">=</span> <span class="n">f_o</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+       <span class="n">text_converted</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+           <span class="n">numbers</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&#34;[0-9.]+&#34;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+ <span class="k">if</span> <span class="n">numbers</span><span class="p">:</span> 
+               <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+               <span class="n">text_converted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;class = &#39;</span><span class="p">,</span><span class="n">num</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+ <span class="c1"># Write file</span>
+ <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+ <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">text_converted</span><span class="p">:</span>
+               <span class="n">fp</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+</code></pre></div><p>Just make sure, if there are three classes, the labels should be 0, 1 or 2, not something else. Change accordingly if that’s not the case.</p>
+<p>Check images list and create train file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span>
+<span class="n">images_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&#34;/content/darknet/data/obj/image/*.jpg&#34;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">images_list</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;/content/darknet/data/train.txt&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_list</span><span class="p">))</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div><p>Now our training files are set and ready to go.</p>
+<blockquote>
+<p><strong>Change configuration settings and train:</strong></p>
+</blockquote>
+<p>We will train yolov3-tiny_obj for just 3 classes, where as it was initially configured for 80 classes. So we need to save some changes to the yolov3-tiny_obj.cfg file.</p>
+<p>Under darknet &gt; cfg, search for yolov3-tiny_obj.cfg and double click to open it on a right-sided panel. It has 13 convolutional layers and 2 yolo layers. Let’s go through the changes from the beginning.</p>
+<p>The file starts with [net]</p>
+<ul>
+<li>Comment out Training and Testing lines.</li>
+<li>Since we will be training with the file here, comment out batch and subdivisions under Testing.</li>
+<li>Change max_batches to 2000 x (number of classes), in this case: 6000</li>
+<li>Under training change batch to 16 and subdivisions to 2, since we have only around 50 images per class. For larger datasets, try batch = 32, 64 and so on, similarly subdivisions = 4, 8 and so on. Ratio of batch/subdivisions = 8 works fine!</li>
+<li>Change steps to 4000 and 5000, specifically for this case. At these steps, the learning rate will be multiplied by scales factor, overall there are no hard rules to defining these numbers, it is more a matter of intuition and logic.</li>
+</ul>
+<p>Overall the initial 24 lines should look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">[</span><span class="n">net</span><span class="p">]</span>
+<span class="c1">#Testing</span>
+<span class="c1">#batch=1</span>
+<span class="c1">#subdivisions=1</span>
+<span class="c1">#Training</span>
+<span class="n">batch</span><span class="o">=</span><span class="mi">16</span>
+<span class="n">subdivisions</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">width</span><span class="o">=</span><span class="mi">416</span>
+<span class="n">height</span><span class="o">=</span><span class="mi">416</span>
+<span class="n">channels</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span>
+<span class="n">decay</span><span class="o">=</span><span class="mf">0.0005</span>
+<span class="n">angle</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">saturation</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">exposure</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">hue</span><span class="o">=</span><span class="mf">.1</span>
+
+<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="n">burn_in</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">max_batches</span> <span class="o">=</span> <span class="mi">6000</span>
+<span class="n">policy</span><span class="o">=</span><span class="n">steps</span>
+<span class="n">steps</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span><span class="mi">5000</span>
+<span class="n">scales</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span><span class="mf">.1</span>
+</code></pre></div><ul>
+<li>Search for the yolo layers. (Look around lines 132 and 174 of the file)</li>
+</ul>
+<p>In those layers, change the number of classes to 3 (or your custom classes).</p>
+<p>Then go to their previous convolutional layer, change the filters according to this formula: (classes + 5) x 3. In this case, where classes = 3, filters = 24. Change filter number accordingly for both layers so that it looks something like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="p">[</span><span class="n">convolutional</span><span class="p">]</span>
+<span class="n">size</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">stride</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">pad</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">filters</span><span class="o">=</span><span class="mi">24</span>
+<span class="n">activation</span><span class="o">=</span><span class="n">linear</span>
+
+<span class="p">[</span><span class="n">yolo</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="n">anchors</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span>  <span class="mi">23</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span>  <span class="mi">37</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span>  <span class="mi">81</span><span class="p">,</span><span class="mi">82</span><span class="p">,</span>  <span class="mi">135</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span>  <span class="mi">344</span><span class="p">,</span><span class="mi">319</span>
+<span class="n">classes</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">num</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">jitter</span><span class="o">=</span><span class="mf">.3</span>
+<span class="n">ignore_thresh</span> <span class="o">=</span> <span class="mf">.7</span>
+<span class="n">truth_thresh</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">random</span><span class="o">=</span><span class="mi">1</span>
+</code></pre></div><p>Ctrl + s to save the file, then execute the following code cell to train the model.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span><span class="o">./</span><span class="n">darknet</span> <span class="n">detector</span> <span class="n">train</span> <span class="n">data</span><span class="o">/</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span> <span class="n">cfg</span><span class="o">/</span><span class="n">yolov3</span><span class="o">-</span><span class="n">tiny_obj</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">dont_show</span>
+</code></pre></div><ol>
+<li>Create a python virtual environment and install open-cv for python.</li>
+<li>Clone this github link into that folder, it contains a python file to run the model and the testing configuration file. Go through the python code and make changes according to your project where marked. Don’t touch other lines!</li>
+<li>Run the python file and you should get results something like this:</li>
+</ol>
+<img src="/img2.png" width = 30%>
+<img src="/img3.png" width = 30%>
+<img src="/img4.png" width = 30%>
+<blockquote>
+<p>Hope this helps! :)</p>
+</blockquote>
+
+            </div>
+        </article>
+    </main>
+</div>
+<footer class="footer">
+    
+
+    <div class="footer_social-icons">
+<a href="https://github.com/coolman-spaceman" target="_blank" rel="noopener noreferrer me" title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/coolman-spaceman/" target="_blank" rel="noopener noreferrer me" title="Linkedin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a></div>
+    
+</footer>
+<script src="https://coolman-spaceman.github.io/js/themeSwitchnMenu.min.f2fa3aed078bf5a7b612bf5548ddd0cb9891199ed24b5b673465df221e70bf4c.js"></script></body>
+</html>

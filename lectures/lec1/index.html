@@ -4,11 +4,11 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">Home | Dibyajyoti Jena</title>
-<meta property="og:title" content="Home | Dibyajyoti Jena" />
-<meta name="twitter:title" content="Home | Dibyajyoti Jena" />
-<meta itemprop="name" content="Home | Dibyajyoti Jena" />
-<meta name="application-name" content="Home | Dibyajyoti Jena" />
+<title itemprop="name">Lecture 1: Introduction and K-Means | Dibyajyoti Jena</title>
+<meta property="og:title" content="Lecture 1: Introduction and K-Means | Dibyajyoti Jena" />
+<meta name="twitter:title" content="Lecture 1: Introduction and K-Means | Dibyajyoti Jena" />
+<meta itemprop="name" content="Lecture 1: Introduction and K-Means | Dibyajyoti Jena" />
+<meta name="application-name" content="Lecture 1: Introduction and K-Means | Dibyajyoti Jena" />
 <meta property="og:site_name" content="Awesome hugo blog" />
 
 <meta name="description" content="Minimal Hugo blog theme with light and dark mode support">
@@ -33,9 +33,7 @@
 
   
 
-  <link rel="canonical" href="https://coolman-spaceman.github.io/">
-  <link href="https://coolman-spaceman.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Dibyajyoti Jena">
-  <link href="https://coolman-spaceman.github.io/index.xml" rel="feed" type="application/rss+xml" title="Dibyajyoti Jena"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+  <link rel="canonical" href="https://coolman-spaceman.github.io/lectures/lec1/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
   
 
@@ -60,7 +58,7 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
-    </head><body data-theme="dark" class="notransition">
+    </head><body data-theme = "dark" class="notransition">
 <script src="https://coolman-spaceman.github.io/js/themeLoader.min.0ea9375d525d6f19779c6d41cfaf9e166e47014d9734ff071daad3a4ff12d147.js"></script><div class="navbar" role="navigation">
   <nav class="menu" aria-label="Main Navigation">
     <a href="/" class="logo">
@@ -85,7 +83,7 @@ stroke-linejoin="round" class="feather feather-home">
         
           <li>
             <a 
-            class="menu-link active"
+            class="menu-link "
             href="/">
             Home
             </a>
@@ -121,7 +119,7 @@ stroke-linejoin="round" class="feather feather-home">
         
           <li>
             <a 
-            class="menu-link "
+            class="menu-link active"
             href="/lectures/">
             ML Lectures
             </a>
@@ -150,18 +148,67 @@ stroke-linejoin="round" class="feather feather-home">
     </div>
   </nav>
 </div>
-<div class="wrapper">
-        
 
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Lecture 1: Introduction and K-Means</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2023-06-30T18:52:07&#43;05:30" itemprop="datePublished"> Jun 30, 2023 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <p>This tutorial assumes some familiarity with basic principles of machine learning, the math and code can be developed on the way.</p>
+<h1 id="machine-learning">Machine Learning</h1>
+<p>Learning can be <strong>Supervised, Unsupervised, Reinforced</strong> and <strong>Semi-supervised</strong>.</p>
+<blockquote>
+<p><strong>Reinforcement Learning</strong>: Learning with a critic, critic may be wrong at times, maybe stochastic, but different from supervisor in case of supervised learning. Supervisor gives feedback, critic only says yes or no.</p>
+</blockquote>
+<h3 id="k-means-algorithm">K-Means algorithm:</h3>
+<ol>
+<li>K as a parameter</li>
+<li>distance threshold as a parameter</li>
+</ol>
+<p>K means crisp decision boundary: grading, fingerprint ROI(Region of Interest)</p>
+<blockquote>
+<p>Reinforcement learning correspinds to lifelong learning, much like our biological learning process.</p>
+</blockquote>
+<p>For crisp decision boundary, some error is always there and is acceptable, but try to minimize the error.</p>
+<p>Fuzzy decision boundary: signal noise separation, decision boundary is not well defined</p>
+<p>Threshold could be crisp or noisy.</p>
+<hr>
+<hr>
+<h4 id="algorithms">Algorithms:</h4>
+<ol>
+<li>
+<p>Polynomial time O(n<sup>k</sup>): size of inut is n, number of steps is n<sup>k</sup>, eg: sorting, FFT</p>
+</li>
+<li>
+<p>Exponential time O(k<sup>n</sup>): size of inut is n, number of steps is k<sup>n</sup>, Travelling salesman problem</p>
+</li>
+<li>
+<p>Ugly: Optimal but takes infinite time</p>
+</li>
+</ol>
+<hr>
+<hr>
+<h4 id="k-means">K Means</h4>
+<ul>
+<li>N points can be divided into K clusters, each point has D dimensions</li>
+<li>u<sub>j</sub> is mean of the jth cluster</li>
+<li>such that the sum of square distances of each data point to its closest vector u<sub>j</sub> is minimum.</li>
+</ul>
 
-<div class="author">
+            </div>
+        </article>
+    </main>
+</div>
+<footer class="footer">
     
-    
-    <img class="author-avatar" src="/avatar_huc081428ccc09aafd678ee223e9ebb53c_7185_100x100_fill_q75_h2_box_smart1.webp" alt="Dibyajyoti Jena" width="99"
-        height="107" />
-    
-    <div>&nbsp;</div>
-    <div class="footer_social-icons"><center>
+
+    <div class="footer_social-icons">
 <a href="https://github.com/coolman-spaceman" target="_blank" rel="noopener noreferrer me" title="Github">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
     stroke-linecap="round" stroke-linejoin="round">
@@ -178,58 +225,7 @@ stroke-linejoin="round" class="feather feather-home">
     <circle cx="4" cy="4" r="2"></circle>
 </svg>
 </a></div>
-    <center><h2 class="author-name">Dibyajyoti Jena </h2>
-    <p style="max-width:95%; text-align: justify;" class="author-bio">Persuing M.Tech in Communication Engineering at IIT Delhi, Electrical Engineering department. When I am not buried inside math and code, I am exploring other areas of interest including Indian modern history and art. Given generative AI makes everyone an artist now, there is some space reserved for people who still dabble with paint brushes!<br><br>
-    </p></center></center>
-</div>
-
-        <main aria-label="Content">
-            <h3 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h3>
-            
-            
-            
-            <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="https://coolman-spaceman.github.io/lectures/lec1/">Lecture 1: Introduction and K-Means</a>
-    </h4>
     
-    
-    <time class="post-item-meta" datetime="2023-06-30T18:52:07&#43;0530">
-        30 Jun 2023
-    </time>
-</article>
-            
-            <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="https://coolman-spaceman.github.io/posts/post2/">Practical Guide On Training Custom Yolo V3 Model</a>
-    </h4>
-    
-    
-    <time class="post-item-meta" datetime="2023-06-23T09:56:43&#43;0530">
-        23 Jun 2023
-    </time>
-</article>
-            
-            <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="https://coolman-spaceman.github.io/about/">About</a>
-    </h4>
-    
-    
-    <time class="post-item-meta" datetime="2023-06-20T00:00:00Z">
-        20 Jun 2023
-    </time>
-</article>
-            
-            
-            <p>
-                <a href="/posts/">See all posts</a>
-            </p>
-            
-
-        </main>
-    </div>
-    
+</footer>
 <script src="https://coolman-spaceman.github.io/js/themeSwitchnMenu.min.f2fa3aed078bf5a7b612bf5548ddd0cb9891199ed24b5b673465df221e70bf4c.js"></script></body>
-
 </html>

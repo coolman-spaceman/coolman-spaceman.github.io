@@ -196,10 +196,41 @@ stroke-linejoin="round" class="feather feather-home">
 <hr>
 <h4 id="k-means">K Means</h4>
 <ul>
-<li>N points can be divided into K clusters, each point has D dimensions</li>
-<li>u<sub>j</sub> is mean of the jth cluster</li>
-<li>such that the sum of square distances of each data point to its closest vector u<sub>j</sub> is minimum.</li>
+<li>
+<p>N points can be divided into K clusters, each point has D dimensions</p>
+</li>
+<li>
+<p>u<sub>j</sub> is mean of the jth cluster</p>
+</li>
+<li>
+<p>such that the sum of square distances of each data point to its closest vector u<sub>j</sub> is minimum.</p>
+</li>
+<li>
+<p>Vector quantizatoin: u<sub>j</sub> -&gt; points</p>
+</li>
+<li>
+<p>Objective function: distortion measure or cost function
+\begin{equation}
+J = \sum_{i = 1}^{N}\sum_{j = 1}^{K} r_{ij} \left |x_i - u_j \right |^2
+\end{equation}</p>
+</li>
+<li>
+<p>Not taking abs or mod because mod is not differentiable and thus avoided during optimization.</p>
+</li>
+<li>
+<p>r <sub>ij</sub> is a binary indicator variable: 1 if the ith data point is assigned to the jth cluster, 0 otherwise.</p>
+</li>
 </ul>
+<p>In total there are N data points and K clusters.</p>
+<ul>
+<li>Find {r<sub>ij</sub>} and {u<sub>j</sub>} such that J is minimised.</li>
+</ul>
+<p>To solve use: <strong>Expectation Maximization framework</strong> or <strong>EM method</strong>.</p>
+<p>Randomly choose K initial clusters with means u<sub>j</sub>.</p>
+<ol>
+<li>Fixed u<sub>j</sub>, find assignment r<sub>ij</sub>.</li>
+<li>Take avg of x<sub>ij</sub> to find new u<sub>j</sub>, repeat from 1.</li>
+</ol>
 
             </div>
         </article>

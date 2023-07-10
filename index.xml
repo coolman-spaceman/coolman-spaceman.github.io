@@ -6,7 +6,17 @@
     <description>Recent content in Home on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Jun 2023 18:52:07 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jul 2023 16:49:19 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>List of major projects</title>
+      <link>https://coolman-spaceman.github.io/projects/list/</link>
+      <pubDate>Mon, 10 Jul 2023 16:49:19 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/projects/list/</guid>
+      <description>This page contains a list of major projects I have done after 2021, most of which have been in Computer Vision, Machine Learning, Communication topics, etc. Each entry has a brief description of the project like the tech stack used and so on. The links to individual project pages will be included later; The list will grow with time!
+Information Flow Across Neural Network Layers   This project aims to decode the black box nature of neural networks and provide insights on how information is processed over the layers of a network based on many metrics such as information capacity.</description>
+    </item>
+    
     <item>
       <title>Lecture 1: Introduction and K-Means</title>
       <link>https://coolman-spaceman.github.io/lectures/lec1/</link>

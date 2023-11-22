@@ -6,7 +6,16 @@
     <description>Recent content in Projects on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Jul 2023 16:49:19 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 10:33:26 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Retinal Fundus Image Enhancement</title>
+      <link>https://coolman-spaceman.github.io/projects/retina/</link>
+      <pubDate>Wed, 22 Nov 2023 10:33:26 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/projects/retina/</guid>
+      <description>Retinal Fundus Image Enhancement With Image Decomposition and Visual Adaptation  A random calming image to show I have no experience in writing content  Retinal fundus photography is a non-invasive method to check for symptoms and other features related to diseases like diabetic retinopathy, age-related macular degeneration, cardiovascular disease. The main features to look out for are the vascular structure, lesions, optic disc, microaneurysms, etc. These depend on high quality fundus images to be processed properly.</description>
+    </item>
+    
     <item>
       <title>List of major projects</title>
       <link>https://coolman-spaceman.github.io/projects/list/</link>

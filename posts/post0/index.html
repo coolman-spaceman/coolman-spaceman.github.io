@@ -53,7 +53,7 @@
         },
         "datePublished": "2023-06-19",
         "description": "",
-        "wordCount":  137 ,
+        "wordCount":  144 ,
         "mainEntityOfPage": "True",
         "dateModified": "2023-06-19",
         "image": {
@@ -96,6 +96,18 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
     </head><body data-theme = "dark" class="notransition">
 <script src="https://coolman-spaceman.github.io/js/themeLoader.min.0ea9375d525d6f19779c6d41cfaf9e166e47014d9734ff071daad3a4ff12d147.js"></script><div class="navbar" role="navigation">
   <nav class="menu" aria-label="Main Navigation">
@@ -202,6 +214,7 @@ stroke-linejoin="round" class="feather feather-home">
 <p>$$ (1 + 1)^2 = 4 $$</p>
 <h1 id="heading-one">Heading one</h1>
 <p>I like <strong>Bold Text</strong>.</p>
+<p>$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$</p>
 <p>\begin{equation}
 \begin{pmatrix}
 1       &amp; x^1_0   &amp; x^2_0   &amp; \cdots  &amp; x^{degree}_0  \\

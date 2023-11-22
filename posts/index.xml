@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jul 2023 21:34:21 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Oct 2023 09:41:29 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Post4</title>
+      <link>https://coolman-spaceman.github.io/posts/post4/</link>
+      <pubDate>Fri, 13 Oct 2023 09:41:29 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/post4/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Getting Started With Machine Learning</title>
       <link>https://coolman-spaceman.github.io/posts/post3/</link>
@@ -47,6 +56,7 @@ Try a youtube video embedding:
       <description>Ok this is the first post, lets see if we can include some math here lol
 $$ (1 + 1)^2 = 4 $$
 Heading one I like Bold Text.
+$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
 \begin{equation} \begin{pmatrix} 1 &amp;amp; x^1_0 &amp;amp; x^2_0 &amp;amp; \cdots &amp;amp; x^{degree}_0 \\ 1 &amp;amp; x^1_1 &amp;amp; x^2_1 &amp;amp; \cdots &amp;amp; x^{degree}_1 \\ \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ 1 &amp;amp; x^1_n &amp;amp; x^2_n &amp;amp; \cdots &amp;amp; x^{degree}_n \\ \end{pmatrix} \end{equation} \begin{equation} \frac{a}{b} \end{equation}</description>
     </item>
     

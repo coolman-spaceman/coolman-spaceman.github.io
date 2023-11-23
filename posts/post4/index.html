@@ -4,11 +4,11 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">Post4 | Dibyajyoti Jena</title>
-<meta property="og:title" content="Post4 | Dibyajyoti Jena" />
-<meta name="twitter:title" content="Post4 | Dibyajyoti Jena" />
-<meta itemprop="name" content="Post4 | Dibyajyoti Jena" />
-<meta name="application-name" content="Post4 | Dibyajyoti Jena" />
+<title itemprop="name">Enemies of feature visualisation: High frequency distortions | Dibyajyoti Jena</title>
+<meta property="og:title" content="Enemies of feature visualisation: High frequency distortions | Dibyajyoti Jena" />
+<meta name="twitter:title" content="Enemies of feature visualisation: High frequency distortions | Dibyajyoti Jena" />
+<meta itemprop="name" content="Enemies of feature visualisation: High frequency distortions | Dibyajyoti Jena" />
+<meta name="application-name" content="Enemies of feature visualisation: High frequency distortions | Dibyajyoti Jena" />
 <meta property="og:site_name" content="Awesome hugo blog" />
 
 <meta name="description" content="Minimal Hugo blog theme with light and dark mode support">
@@ -46,14 +46,14 @@
     {
         "@context": "http://schema.org",
         "@type": "Article",
-        "headline": "Post4",
+        "headline": "Enemies of feature visualisation: High frequency distortions",
         "author": {
         "@type": "Person",
         "name": ""
         },
         "datePublished": "2023-10-13",
         "description": "",
-        "wordCount":  0 ,
+        "wordCount":  813 ,
         "mainEntityOfPage": "True",
         "dateModified": "2023-10-13",
         "image": {
@@ -203,14 +203,184 @@ stroke-linejoin="round" class="feather feather-home">
     <main class="page-content" aria-label="Content">
         <article>
             <header class="header">
-                <h1 class="header-title">Post4</h1>
+                <h1 class="header-title">Enemies of feature visualisation: High frequency distortions</h1>
                 
                 <div class="post-meta">
                     <time datetime="2023-10-13T09:41:29&#43;05:30" itemprop="datePublished"> Oct 13, 2023 </time>
                 </div>
             </header>
             <div class="page-content">
-                
+                <p>First understand how feature visualisation works:</p>
+<p>Essentialy we choose a random image and iteratively optimise it so that a specific neuron is fired.</p>
+<p>STEPS:</p>
+<ol>
+<li>Choose a neuron whose activation you want to visualise.</li>
+<li>Initialise a random image</li>
+<li>Forward propagate: Get the output of the random image at that neuron: We want to maximise this: Our cost function</li>
+<li>Back-propagate on it using Gradient Ascent:
+Find the gradient with respect to input, <strong>add this to the input</strong></li>
+</ol>
+<p>Note: in gradient descent&gt; we subtract the gradient from weights during backpropagation.</p>
+<p>Ideally this should give the optimised image for that particular neuron: But</p>
+<p><strong>High frequency artifacts creep in.</strong></p>
+<p>HOW?</p>
+<p>Note almost all neurons in a layer are trying to find artifacts/ features from the previous layer output. In gradient ascent we are essentially adding all these features into the image, a bit mindlessly!</p>
+<p>So we end up with a kind of neural network optical illusion: image full of noise and nonsensical high-frequency patterns that the network responds strongly to.</p>
+<p>In this assignment, we try to remove high frequency artifacts and noise in each iteration using a denoising algorithm:</p>
+<ol>
+<li>Total variation</li>
+</ol>
+<p>Total variation denosing method:
+In TV method we follow an optimization method to minimize the following cost function:
+$$ min_u \sum_{i=0}^{N-1}((f_i-u_i)^2 + \lambda \left |\Delta u_i   \right |) $$
+where f is the input image and u is the output(denoised).</p>
+<p>The first term is called <strong>variation term</strong> and <strong>2nd term is regularization</strong>.</p>
+<p>Look closely: 1st term is difference of input and output image. <strong>This can be minimised by just taking input image equal to output image.</strong></p>
+<p>But regularisation is provided by the 2nd term: we also have to <strong>minimise the gradients of the output image</strong>.</p>
+<p>On a smallar scale we can think of noise pixels as having high gradient compared to its neighbours. If we smooth out that pixel, we are reducing the gradient.</p>
+<p>OVERALL: we want our <strong>output to be close to input image</strong>, but <strong>without high frequency gradients</strong>: keep structure of original image and reject the excessive gradients: effectively denoising.</p>
+<h3>Code in Google Colab</h3>
+<p><strong>Copy and Run</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">skimage.restoration</span> <span class="kn">import</span> <span class="n">denoise_tv_chambolle</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">ResNet50V2</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&#34;imagenet&#34;</span><span class="p">,</span> <span class="n">include_top</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">layer_name</span> <span class="o">=</span> <span class="s2">&#34;conv5_block1_out&#34;</span>
+<span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span> <span class="o">=</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span>
+<span class="c1"># Set up a model that returns the activation values for our target layer</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+<span class="n">feature_extractor</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">layer</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div><p>Initialise the random image</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">initialize_image</span><span class="p">():</span>
+    <span class="c1"># We start from a gray image with some random noise</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_height</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="c1"># ResNet50V2 expects inputs in the range [-1, +1].</span>
+    <span class="c1"># Here we scale our random inputs to [-0.125, +0.125]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">img</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.25</span>
+</code></pre></div><p>Loss function is effectively the mean of activation at a particular neuron</p>
+<p>Maximize this loss</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">filter_index</span><span class="p">):</span>
+    <span class="n">activation</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+    <span class="c1"># We avoid border artifacts by only involving non-border pixels in the loss.</span>
+    <span class="n">filter_activation</span> <span class="o">=</span> <span class="n">activation</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">filter_index</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">filter_activation</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span> <span class="nf">gradient_ascent_step</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">filter_index</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">compute_loss</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">filter_index</span><span class="p">)</span>
+    <span class="c1"># Compute gradients.</span>
+    <span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="c1"># Normalize gradients.</span>
+    <span class="n">grads</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">grads</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">+=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">grads</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">img</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">deprocess_image</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="c1"># Normalize array: center on 0., ensure variance is 0.15</span>
+    <span class="n">img</span> <span class="o">-=</span> <span class="n">img</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">/=</span> <span class="n">img</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-5</span>
+    <span class="n">img</span> <span class="o">*=</span> <span class="mf">0.15</span>
+
+    <span class="c1"># Center crop</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">:</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="c1"># Clip to [0, 1]</span>
+    <span class="n">img</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Convert to RGB array</span>
+    <span class="c1">#img *= 255</span>
+    <span class="c1">#img = np.clip(img, 0, 255).astype(&#34;uint8&#34;)</span>
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="k">def</span> <span class="nf">visualize_filter</span><span class="p">(</span><span class="n">filter_index</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">blur</span><span class="p">,</span> <span class="n">blur_weight</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">750</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
+    <span class="n">image_array</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">initialize_image</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">)):</span>
+        <span class="n">loss</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">gradient_ascent_step</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">filter_index</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">)</span>
+        <span class="c1">#print(img.shape)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">blur</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">iteration</span><span class="o">&gt;=</span><span class="mi">50</span><span class="p">):</span><span class="c1"># and iterations&lt;1000):</span>
+                <span class="c1">#print(&#39;yes hello&#39;)</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">denoise_tv_chambolle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">blur_weight</span><span class="p">)</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">iteration</span> <span class="ow">in</span> <span class="n">num</span><span class="p">):</span>
+           <span class="c1"># print(iteration)</span>
+            <span class="n">image_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deprocess_image</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()))</span>
+
+
+    <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">image_array</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">num_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">750</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">image_array0</span> <span class="o">=</span> <span class="n">visualize_filter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">2001</span><span class="p">,</span> <span class="n">blur</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">blur_weight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array0</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;iter: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">num_array</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</code></pre></div><figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/postimages/post4/img1.png" width="900">
+</div>
+</figure>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">loss</span><span class="p">,</span> <span class="n">image_array01</span> <span class="o">=</span> <span class="n">visualize_filter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">2001</span><span class="p">,</span> <span class="n">blur</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">blur_weight</span> <span class="o">=</span> <span class="mf">0.0005</span><span class="p">)</span>
+<span class="n">num_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">750</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array01</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;iter: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">num_array</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</code></pre></div><figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/postimages/post4/img2.png" width="900">
+</div>
+</figure>
+```python
+loss, image_array01 = visualize_filter(1, learning_rate = 2.0, iterations = 2001, blur = True, blur_weight = 0.0005)
+num_array = [5,10,50,100,200,500,750, 1000, 1500, 2000]
+plt.figure(figsize = (16,7))
+for i in range(10):
+    plt.subplot(2,5,i+1)
+    plt.imshow(image_array01[i])
+    plt.title('iter: '+str(num_array[i]))
+```
+<figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/postimages/post4/img3.png" width="900">
+</div>
+</figure>
+<h3>Compare between different denoise parameters</h3>
+<p><strong>Block 5 Conv 3</strong></p>
+<p>This neuron detects a superposition of circles/curves.</p>
+<p>1st column: no denoising</p>
+<p>2nd column: denoising parameter 0.0005</p>
+<p>3rd column: denoising parameter 0.001</p>
+<figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/postimages/post4/img4.png" width="900">
+</div>
+</figure>
+<p><strong>Block 2 Conv 2</strong></p>
+<p>This particular nueron detects diagonal/curvy lines.</p>
+<p>Towards the initial layers, not much noise is added and thus there is not much effect of denoising.</p>
+<figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/postimages/post4/img5.png" width="900">
+</div>
+</figure>
+
             </div>
         </article>
     </main>

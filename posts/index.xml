@@ -8,12 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Oct 2023 09:41:29 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Post4</title>
+      <title>Enemies of feature visualisation: High frequency distortions</title>
       <link>https://coolman-spaceman.github.io/posts/post4/</link>
       <pubDate>Fri, 13 Oct 2023 09:41:29 +0530</pubDate>
       
       <guid>https://coolman-spaceman.github.io/posts/post4/</guid>
-      <description></description>
+      <description>First understand how feature visualisation works:
+Essentialy we choose a random image and iteratively optimise it so that a specific neuron is fired.
+STEPS:
+ Choose a neuron whose activation you want to visualise. Initialise a random image Forward propagate: Get the output of the random image at that neuron: We want to maximise this: Our cost function Back-propagate on it using Gradient Ascent: Find the gradient with respect to input, add this to the input  Note: in gradient descent&amp;gt; we subtract the gradient from weights during backpropagation.</description>
     </item>
     
     <item>

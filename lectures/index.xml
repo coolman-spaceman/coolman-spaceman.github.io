@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ELL784 Lecures Spring Semester at IIT Delhi on Dibyajyoti Jena</title>
+    <title>Computational Topology Lectures on Dibyajyoti Jena</title>
     <link>https://coolman-spaceman.github.io/lectures/</link>
-    <description>Recent content in ELL784 Lecures Spring Semester at IIT Delhi on Dibyajyoti Jena</description>
+    <description>Recent content in Computational Topology Lectures on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 30 Jun 2023 18:52:07 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/lectures/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Lecture 1: Introduction and K-Means</title>
+      <title>Introduction to K-Means</title>
       <link>https://coolman-spaceman.github.io/lectures/lec1/</link>
       <pubDate>Fri, 30 Jun 2023 18:52:07 +0530</pubDate>
       

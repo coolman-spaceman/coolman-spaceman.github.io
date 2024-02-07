@@ -40,11 +40,23 @@ Information Flow Across Neural Network Layers   This project aims to decode the 
     </item>
     
     <item>
-      <title>Lecture 1: Introduction and K-Means</title>
+      <title>Introduction to K-Means</title>
       <link>https://coolman-spaceman.github.io/lectures/lec1/</link>
       <pubDate>Fri, 30 Jun 2023 18:52:07 +0530</pubDate>
       
       <guid>https://coolman-spaceman.github.io/lectures/lec1/</guid>
+      <description>This tutorial assumes some familiarity with basic principles of machine learning, the math and code can be developed on the way.
+Machine Learning Learning can be Supervised, Unsupervised, Reinforced and Semi-supervised.
+ Reinforcement Learning: Learning with a critic, critic may be wrong at times, maybe stochastic, but different from supervisor in case of supervised learning. Supervisor gives feedback, critic only says yes or no.
+ K-Means algorithm:  K as a parameter distance threshold as a parameter  K means crisp decision boundary: grading, fingerprint ROI(Region of Interest)</description>
+    </item>
+    
+    <item>
+      <title>Introduction to K-Means</title>
+      <link>https://coolman-spaceman.github.io/posts/lec1/</link>
+      <pubDate>Fri, 30 Jun 2023 18:52:07 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/lec1/</guid>
       <description>This tutorial assumes some familiarity with basic principles of machine learning, the math and code can be developed on the way.
 Machine Learning Learning can be Supervised, Unsupervised, Reinforced and Semi-supervised.
  Reinforcement Learning: Learning with a critic, critic may be wrong at times, maybe stochastic, but different from supervisor in case of supervised learning. Supervisor gives feedback, critic only says yes or no.
@@ -67,7 +79,8 @@ Machine Learning Learning can be Supervised, Unsupervised, Reinforced and Semi-s
       
       <guid>https://coolman-spaceman.github.io/about/</guid>
       <description>Hello visitor, I am Dibyajyoti Jena, working my way to stay away from Roko&amp;rsquo;s Basilisk.
-My undergrad was from IIIT Bhubaneswar, India, in Electronics and Communication (2021), where I learnt my love for good code. I am now pursuing a masters in Communication Engineering.
+I am now pursuing a masters in Communication Engineering from IIT Delhi.
+My undergrad was from IIIT Bhubaneswar, India, in Electronics and Communication (2021), where I learnt my love for good code.
 On the lookout for employment opportunities/internships in the mixed fields of machine learning, deep learning or signal processing and communication. Any future employers are welcome drop a mail at dibyajyotijena47@gmail.</description>
     </item>
     

@@ -4,11 +4,11 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">Projects | Dibyajyoti Jena</title>
-<meta property="og:title" content="Projects | Dibyajyoti Jena" />
-<meta name="twitter:title" content="Projects | Dibyajyoti Jena" />
-<meta itemprop="name" content="Projects | Dibyajyoti Jena" />
-<meta name="application-name" content="Projects | Dibyajyoti Jena" />
+<title itemprop="name">Introduction to K-Means | Dibyajyoti Jena</title>
+<meta property="og:title" content="Introduction to K-Means | Dibyajyoti Jena" />
+<meta name="twitter:title" content="Introduction to K-Means | Dibyajyoti Jena" />
+<meta itemprop="name" content="Introduction to K-Means | Dibyajyoti Jena" />
+<meta name="application-name" content="Introduction to K-Means | Dibyajyoti Jena" />
 <meta property="og:site_name" content="Awesome hugo blog" />
 
 <meta name="description" content="Minimal Hugo blog theme with light and dark mode support">
@@ -29,13 +29,49 @@
 
 
 
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-06-30T18:52:07&#43;0530 />
+    <meta property="article:published_time" content=2023-06-30T18:52:07&#43;0530 />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Introduction to K-Means",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2023-06-30",
+        "description": "",
+        "wordCount":  327 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2023-06-30",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Dibyajyoti Jena"
+        }
+    }
+    </script>
+
   <meta name="generator" content="Hugo 0.92.2" />
 
   
 
-  <link rel="canonical" href="https://coolman-spaceman.github.io/projects/">
-  <link href="https://coolman-spaceman.github.io/projects/index.xml" rel="alternate" type="application/rss+xml" title="Dibyajyoti Jena">
-  <link href="https://coolman-spaceman.github.io/projects/index.xml" rel="feed" type="application/rss+xml" title="Dibyajyoti Jena"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+  <link rel="canonical" href="https://coolman-spaceman.github.io/posts/lec1/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
   
 
@@ -106,7 +142,7 @@ stroke-linejoin="round" class="feather feather-home">
         
           <li>
             <a 
-            class="menu-link "
+            class="menu-link active"
             href="/posts/">
             Posts
             </a>
@@ -115,7 +151,7 @@ stroke-linejoin="round" class="feather feather-home">
         
           <li>
             <a 
-            class="menu-link active"
+            class="menu-link "
             href="/projects/">
             Projects
             </a>
@@ -162,36 +198,95 @@ stroke-linejoin="round" class="feather feather-home">
     </div>
   </nav>
 </div>
-<div class="wrapper list-page">
-    <header class="header">
-        <h1 class="header-title center">Projects</h1>
-    </header>
+
+<div class="wrapper post">
     <main class="page-content" aria-label="Content">
-        
-        
-        <h2 class="post-year">2023</h2>
+        <article>
+            <header class="header">
+                <h1 class="header-title">Introduction to K-Means</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2023-06-30T18:52:07&#43;05:30" itemprop="datePublished"> Jun 30, 2023 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <p>This tutorial assumes some familiarity with basic principles of machine learning, the math and code can be developed on the way.</p>
+<h1 id="machine-learning">Machine Learning</h1>
+<p>Learning can be <strong>Supervised, Unsupervised, Reinforced</strong> and <strong>Semi-supervised</strong>.</p>
+<blockquote>
+<p><strong>Reinforcement Learning</strong>: Learning with a critic, critic may be wrong at times, maybe stochastic, but different from supervisor in case of supervised learning. Supervisor gives feedback, critic only says yes or no.</p>
+</blockquote>
+<h3 id="k-means-algorithm">K-Means algorithm:</h3>
+<ol>
+<li>K as a parameter</li>
+<li>distance threshold as a parameter</li>
+</ol>
+<p>K means crisp decision boundary: grading, fingerprint ROI(Region of Interest)</p>
+<blockquote>
+<p>Reinforcement learning correspinds to lifelong learning, much like our biological learning process.</p>
+</blockquote>
+<p>For crisp decision boundary, some error is always there and is acceptable, but try to minimize the error.</p>
+<p>Fuzzy decision boundary: signal noise separation, decision boundary is not well defined</p>
+<p>Threshold could be crisp or noisy.</p>
+<hr>
+<hr>
+<h4 id="algorithms">Algorithms:</h4>
+<ol>
+<li>
+<p>Polynomial time O(n<sup>k</sup>): size of inut is n, number of steps is n<sup>k</sup>, eg: sorting, FFT</p>
+</li>
+<li>
+<p>Exponential time O(k<sup>n</sup>): size of inut is n, number of steps is k<sup>n</sup>, Travelling salesman problem</p>
+</li>
+<li>
+<p>Ugly: Optimal but takes infinite time</p>
+</li>
+</ol>
+<hr>
+<hr>
+<h4 id="k-means">K Means</h4>
+<ul>
+<li>
+<p>N points can be divided into K clusters, each point has D dimensions</p>
+</li>
+<li>
+<p>u<sub>j</sub> is mean of the jth cluster</p>
+</li>
+<li>
+<p>such that the sum of square distances of each data point to its closest vector u<sub>j</sub> is minimum.</p>
+</li>
+<li>
+<p>Vector quantizatoin: u<sub>j</sub> -&gt; points</p>
+</li>
+<li>
+<p>Objective function: distortion measure or cost function
+\begin{equation}
+J = \sum_{i = 1}^{N}\sum_{j = 1}^{K} r_{ij} \left |x_i - u_j \right |^2
+\end{equation}</p>
+</li>
+<li>
+<p>Not taking abs or mod because mod is not differentiable and thus avoided during optimization.</p>
+</li>
+<li>
+<p>r <sub>ij</sub> is a binary indicator variable: 1 if the ith data point is assigned to the jth cluster, 0 otherwise.</p>
+</li>
+</ul>
+<p>In total there are N data points and K clusters.</p>
+<ul>
+<li>Find {r<sub>ij</sub>} and {u<sub>j</sub>} such that J is minimised.</li>
+</ul>
+<p>To solve use: <strong>Expectation Maximization framework</strong> or <strong>EM method</strong>.</p>
+<p>Randomly choose K initial clusters with means u<sub>j</sub>.</p>
+<ol>
+<li>Fixed u<sub>j</sub>, find assignment r<sub>ij</sub>.</li>
+<li>Take avg of x<sub>ij</sub> to find new u<sub>j</sub>, repeat from 1.</li>
+</ol>
 
-        
-
-        
-
-        <article class="post-item">
-    <h4 class="post-item-title">
-        <a href="https://coolman-spaceman.github.io/projects/list/">List of major projects</a>
-    </h4>
-    
-    
-    <time class="post-item-meta" datetime="2023-07-10T16:49:19&#43;0530">
-        10 Jul 2023
-    </time>
-</article>
-
-         
-
-         
-
+            </div>
+        </article>
     </main>
-</div><footer class="footer">
+</div>
+<footer class="footer">
     
 
     <div class="footer_social-icons">

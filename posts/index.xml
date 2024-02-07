@@ -30,6 +30,18 @@ And why did I decide to start a blog post on machine learning when there is lite
     </item>
     
     <item>
+      <title>Introduction to K-Means</title>
+      <link>https://coolman-spaceman.github.io/posts/lec1/</link>
+      <pubDate>Fri, 30 Jun 2023 18:52:07 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/lec1/</guid>
+      <description>This tutorial assumes some familiarity with basic principles of machine learning, the math and code can be developed on the way.
+Machine Learning Learning can be Supervised, Unsupervised, Reinforced and Semi-supervised.
+ Reinforcement Learning: Learning with a critic, critic may be wrong at times, maybe stochastic, but different from supervisor in case of supervised learning. Supervisor gives feedback, critic only says yes or no.
+ K-Means algorithm:  K as a parameter distance threshold as a parameter  K means crisp decision boundary: grading, fingerprint ROI(Region of Interest)</description>
+    </item>
+    
+    <item>
       <title>Practical Guide On Training Custom Yolo V3 Model</title>
       <link>https://coolman-spaceman.github.io/posts/post2/</link>
       <pubDate>Fri, 23 Jun 2023 09:56:43 +0530</pubDate>

@@ -6,7 +6,19 @@
     <description>Recent content in Home on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Feb 2024 12:53:54 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Feb 2024 12:48:06 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Differential geometry for machine learning</title>
+      <link>https://coolman-spaceman.github.io/posts/post5/</link>
+      <pubDate>Tue, 13 Feb 2024 12:48:06 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/post5/</guid>
+      <description>Author: Roger Grosse
+Intended: I wanted to save this post for my own read-list but it was interesting enough to post here. I am not the original author. Here is the original link.
+Description: An overview of several uses of differential geometry ideas in machine learning.
+In machine learning, we&amp;rsquo;re often interested in learning a function or a distribution that we can use to making predictions. In order to learn and apply such a function or distribution, we need to somehow represent it, i.</description>
+    </item>
+    
     <item>
       <title>List of publications</title>
       <link>https://coolman-spaceman.github.io/publications/list/</link>
@@ -92,8 +104,18 @@ Machine Learning Learning can be Supervised, Unsupervised, Reinforced and Semi-s
       <guid>https://coolman-spaceman.github.io/about/</guid>
       <description>Hello visitor, I am Dibyajyoti Jena, working my way to stay away from Roko&amp;rsquo;s Basilisk.
 I am now pursuing a masters in Communication Engineering from IIT Delhi.
-My undergrad was from IIIT Bhubaneswar, India, in Electronics and Communication (2021), where I learnt my love for good code.
-On the lookout for employment opportunities/internships in the mixed fields of machine learning, deep learning or signal processing and communication. Any future employers are welcome drop a mail at dibyajyotijena47@gmail.</description>
+My undergrad was from IIIT Bhubaneswar, India, in Electronics and Communication (2021).
+On the lookout for employment opportunities/internships in the mixed fields of machine learning, deep learning or signal processing and communication. Any future employers are welcome drop a mail at dibyajyotijena47@gmail.com.
+Listed below are a few of the skills I have acquired over the years:</description>
+    </item>
+    
+    <item>
+      <title>My Art Stuff</title>
+      <link>https://coolman-spaceman.github.io/paint/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/paint/</guid>
+      <description>Digital painting inspired from Ninja Arashi video game    A very bad doodle of vAN gOGH&amp;rsquo;S Starry Night    Doodle of a wolf, while in some random classroom    </description>
     </item>
     
     <item>

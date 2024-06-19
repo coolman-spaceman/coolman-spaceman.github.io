@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Oct 2023 09:41:29 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Feb 2024 12:48:06 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Differential geometry for machine learning</title>
+      <link>https://coolman-spaceman.github.io/posts/post5/</link>
+      <pubDate>Tue, 13 Feb 2024 12:48:06 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/posts/post5/</guid>
+      <description>Author: Roger Grosse
+Intended: I wanted to save this post for my own read-list but it was interesting enough to post here. I am not the original author. Here is the original link.
+Description: An overview of several uses of differential geometry ideas in machine learning.
+In machine learning, we&amp;rsquo;re often interested in learning a function or a distribution that we can use to making predictions. In order to learn and apply such a function or distribution, we need to somehow represent it, i.</description>
+    </item>
+    
     <item>
       <title>Enemies of feature visualisation: High frequency distortions</title>
       <link>https://coolman-spaceman.github.io/posts/post4/</link>

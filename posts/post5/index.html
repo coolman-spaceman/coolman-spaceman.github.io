@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Differential geometry for machine learning | Dibyajyoti Jena</title>
+<meta property="og:title" content="Differential geometry for machine learning | Dibyajyoti Jena" />
+<meta name="twitter:title" content="Differential geometry for machine learning | Dibyajyoti Jena" />
+<meta itemprop="name" content="Differential geometry for machine learning | Dibyajyoti Jena" />
+<meta name="application-name" content="Differential geometry for machine learning | Dibyajyoti Jena" />
+<meta property="og:site_name" content="Awesome hugo blog" />
+
+<meta name="description" content="Minimal Hugo blog theme with light and dark mode support">
+<meta itemprop="description" content="Minimal Hugo blog theme with light and dark mode support" />
+<meta property="og:description" content="Minimal Hugo blog theme with light and dark mode support" />
+<meta name="twitter:description" content="Minimal Hugo blog theme with light and dark mode support" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+
+
+  <meta itemprop="image" content="https://coolman-spaceman.github.io/" />
+  <meta property="og:image" content="https://coolman-spaceman.github.io/" />
+  <meta name="twitter:image" content="https://coolman-spaceman.github.io/" />
+  <meta name="twitter:image:src" content="https://coolman-spaceman.github.io/" />
+
+
+
+
+    
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2024-02-13T12:48:06&#43;0530 />
+    <meta property="article:published_time" content=2024-02-13T12:48:06&#43;0530 />
+
+    
+
+    
+
+    <script defer type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "headline": "Differential geometry for machine learning",
+        "author": {
+        "@type": "Person",
+        "name": ""
+        },
+        "datePublished": "2024-02-13",
+        "description": "",
+        "wordCount":  4433 ,
+        "mainEntityOfPage": "True",
+        "dateModified": "2024-02-13",
+        "image": {
+        "@type": "imageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Dibyajyoti Jena"
+        }
+    }
+    </script>
+
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+
+  <link rel="canonical" href="https://coolman-spaceman.github.io/posts/post5/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+    </head><body data-theme = "dark" class="notransition">
+<script src="https://coolman-spaceman.github.io/js/themeLoader.min.0ea9375d525d6f19779c6d41cfaf9e166e47014d9734ff071daad3a4ff12d147.js"></script><div class="navbar" role="navigation">
+  <nav class="menu" aria-label="Main Navigation">
+    <a href="/" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+    </a>
+    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+    <label for="menu-trigger">
+      <span class="menu-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+      </span>
+    </label>
+
+    <div class="trigger">
+      <ul class="trigger-container">
+        
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/">
+            Home
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link active"
+            href="/posts/">
+            Posts
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/projects/">
+            Projects
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/publications/">
+            Publications
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/lectures/">
+            All Lin. Algebra
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/paint/">
+            Art Stuff
+            </a>
+            
+          </li>
+        
+          <li>
+            <a 
+            class="menu-link "
+            href="/about/">
+            About
+            </a>
+            
+          </li>
+        
+        <li class="menu-separator">
+          <span>|</span>
+        </li>
+      </ul>
+      <a id="mode" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Differential geometry for machine learning</h1>
+                
+                <div class="post-meta">
+                    <time datetime="2024-02-13T12:48:06&#43;05:30" itemprop="datePublished"> Feb 13, 2024 </time>
+                </div>
+            </header>
+            <div class="page-content">
+                <p><strong>Author</strong>: Roger Grosse</p>
+<p><strong>Intended</strong>: I wanted to save this post for my own read-list but it was interesting enough to post here. I am not the original author. Here is the original <a href="https://metacademy.org/roadmaps/rgrosse/dgml">link</a>.</p>
+<p><strong>Description</strong>: An overview of several uses of differential geometry ideas in machine learning.</p>
+<p>In machine learning, we&rsquo;re often interested in learning a function or a distribution that we can use to making predictions. In order to learn and apply such a function or distribution, we need to somehow <em>represent</em> it, i.e. put it into a form where we can do computations on it. In parametric modeling, we typically do this by choosing a finite set of parameters which fully characterize the predictor. (Nonparametric modeling, where the model is unbounded in size, often requires coming up with a clever representation in terms of the training examples.) Much of the time, the representation is merely a computational tool, and what we ultimately care about is the function or distribution itself.</p>
+<p>As we&rsquo;ll see below, the performance of many learning algorithms is very sensitive to the choice of representation. A lot of work has been devoted to coming up with clever reparameterizations which boost the performance of an algorithm. (As a simple example, consider how often you need to recenter your data with zero mean and unit variance!) But this seems odd: if you&rsquo;re working with the same class of predictors, why should the algorithm do something different just because you&rsquo;re describing those predictors differently?</p>
+<p>In fact, lots of algorithms have been carefully designed to be independent of the representation.
+Many of the biggest advances in the last 30 years of machine learning research can be seen as languages for talking directly about the predictors themselves without reference to an underlying parameterization. Examples include <a href="kernel_trick">kernels</a>, <a href="gaussian_processes">Gaussian processes</a>, <a href="dirichlet_process">Bayesian nonparametrics</a>, and <a href="vc_dimension">VC dimension</a>.</p>
+<p>Differential geometry is all about constructing things which are independent of the representation. You treat the space of objects (e.g. distributions) as a manifold, and describe your algorithm in terms of things that are intrinsic to the manifold itself. While you ultimately need to use some coordinate system to do the actual computations, the higher-level abstractions make it easier to check that the objects you&rsquo;re working with are intrinsically meaningful. This roadmap is intended to highlight some examples of models and algorithms from machine learning which can be interpreted in terms of differential geometry.</p>
+<p>Most of the content in this roadmap belongs to information geometry, the study of manifolds of probability distributions. The best reference on this topic is probably Amari and Nagaoka&rsquo;s <a href="http://www.amazon.com/Information-Translations-Mathematical-Monographs-Tanslations/dp/0821843028/">Methods of Information Geometry</a>. If you&rsquo;re working through that book, you will hopefully still find this roadmap useful for some context and to track down background readings.</p>
+<h1 id="about-this-roadmap">About this roadmap</h1>
+<p>So far, Metacademy has mostly been geared towards learning things at a comparable level to a university course. I&rsquo;m writing this roadmap as kind of an experiment, to see if Metacademy can be used to convey cutting-edge research topics and deep connections between different fields &ndash; things which most experts in the field aren&rsquo;t already familiar with.</p>
+<p>Accordingly, it is more advanced and specialized than the other Metacademy roadmaps. If you&rsquo;re looking for a broader understanding of the field, the <a href="http://www.metacademy.org/roadmaps/rgrosse/bayesian_machine_learning">Bayesian machine learning</a> and <a href="http://www.metacademy.org/roadmaps/rgrosse/deep_learning">deep learning</a> roadmaps are of more general interest. Or, if you&rsquo;re just starting out, check out <a href="http://www.metacademy.org/roadmaps/cjrd/level-up-your-ml">&ldquo;Level-up your machine learning.&quot;</a></p>
+<p>This roadmap covers a bunch of neat connections between differential geometry and machine learning. As far as I know, it&rsquo;s pretty hard to find them in a textbook or a course, since the number of people who have the requisite background in both fields is fairly small. Teaching basic differential geometry concepts in an ML course would be too much of a detour. But if you already have the ML background, you&rsquo;ll find that the number of additional differential geometry concepts you need to learn is pretty minimal &ndash; only a fraction of a semester course.</p>
+<p>If you are new to Metacademy, you can find a bit more about the structure and motivation <a href="http://www.metacademy.org/about">here</a>. Links to Metacademy concepts are shown in red; these will give you a full learning plan for the concept, assuming only high school calculus.
+These learning plans automatically get updated as new information is added to Metacademy. External links are shown in green; you&rsquo;re more or less on your own here, though we try to fill in background links where we can. There&rsquo;s no need to go through this roadmap linearly; you can follow whatever you need or find interesting. The learning plans will fill in the background.
+This roadmap itself just provides enough context and motivation to understand why you might want to learn about the topics; to learn them for real, you will need to follow the links and do the readings.</p>
+<p>All of the algorithms and models covered in this roadmap can be implemented without understanding the underlying differential geometry. But this background gives additional insights into the algorithms, and hopefully makes some of the mysterious-looking formulas appear more intuitive. It may also suggest ways to generalize these algorithms which wouldn&rsquo;t be apparent if you&rsquo;ve just memorized the formuals.</p>
+<h1 id="motivation-why-representation-independence">Motivation: why representation independence?</h1>
+<p>Why do we care if an algorithm&rsquo;s behavior depends on the representation of the predictor?  In order to motivate this, I&rsquo;ll discuss a simple example, one which has nothing to do with differential geometry: polynomial regression. Suppose we wish to fit a cubic polynomial to predict a scalar target y as a function of a scalar input x. We can do this with <a href="linear_regression">linear regression</a>, using the <a href="basis_function_expansions">basis function expansion</a>  phi(x) = (1, x, x^2, x^3).
+For a small dataset, we might get results such as the following:</p>
+<img width="350px" class="center-image" src="https://i.imgur.com/rLAvSZI.png" alt="Polynomial regression">
+<img width="350px" class="center-image" src="https://i.imgur.com/DdWOeFW.png" alt="Polynomial regression, shifted">
+<p>The two figures show the same data, except that the one on the right has been shifted so that the x-axis goes from 8 to 12 rather than from -2 to 2. Observe that the fitted polynomial is the same (except shifted by the same amount). This happens because polynomial regression chooses the polynomial which minimizes the squared error, and polynomials can be shifted, i.e. replace p(x) by p(x-10), where p denotes the polynomial. Notice that the one on the right has very large coefficients, because this shifting operation tends to blow up the coefficients when it is explicitly expanded out. This has no impact on the algorithm, at least in exact arithmetic. (Numerical stability issues turn out to be very significant, but I&rsquo;ll ignore those issues in this roadmap.)</p>
+<p>Linear regression is invariant to parameterization, but the story changes once we try to regularize the model. The most common regularized version of linear regression is <a href="ridge_regression">ridge regression</a>, where we penalize the squared Euclidean norm of the coefficients. Now observe what happens when we try to fit the same data as above:</p>
+<img width="350px" class="center-image" src="https://i.imgur.com/4up9Ffi.png" alt="Polynomial regression, regularized">
+<img width="350px" class="center-image" src="https://i.imgur.com/OOMKSFN.png" alt="Polynomial regression, shifted, regularized">
+<p>Now the fits are completely different!  Ridge regression <em>hates</em> large coefficients, so it tries really hard to shrink the coefficients in the second model, even at the expense of predictive accuracy. This is a bit troubling, since regularization is intended to penalize the &ldquo;complexity&rdquo; of the predictor, and it doesn&rsquo;t seem like shifting your data should change the relative complexity of different polynomial models.</p>
+<p>The problem of representation invariance when fitting smooth functions has been studied pretty extensively. <a href="http://en.wikipedia.org/wiki/Smoothing_splines">Smoothing splines</a> are a kind of regression model motivated in terms of a variational optimization problem formulated on the functions themselves. More modern approaches include <a href="kernel_ridge_regression">kernel ridge regression</a> and <a href="gaussian_process_regression">Gaussian process regression</a>. See <a href="http://www.gatsby.ucl.ac.uk/~edward/pub/occam.pdf">this interesting paper</a> for a discussion of how Gaussian process regression incorporates a sophisticated form of Occam&rsquo;s Razor which accounts for the complexity of the functions themselves.</p>
+<p>In this particular example, you can get rid of the pathology by centering your data at 0. But there aren&rsquo;t any comparably easy fixes for many of the problems discussed later in this roadmap. In fact, if your algorithm is performing badly, there&rsquo;s often little to suggest that the problem lies with the representation.</p>
+<h1 id="the-basics">The basics</h1>
+<p>The central object of study in differential geometry is the <a href="differentiable_manifolds">differentiable manifold</a>. A manifold is essentially a space you can cover with coordinate charts, which are invertible, continuous mappings to some subset of R^n.
+If the charts are chosen such that the mapping between any pair of overlapping charts is differentiable, then it&rsquo;s a differentiable manifold.</p>
+<p>Differential geometry gives us a way to construct <em>natural</em> objects, i.e. ones which are intrinsic to the manifold itself.
+Naturality has a <a href="http://en.wikipedia.org/wiki/Naturality">precise meaning</a> in category theory, but effectively it means that they transform in the &ldquo;right way&rdquo; when you map them from one space to another.
+The most important case for us is when the transformation is a change of coordinates: if you compute an object (e.g. a weight update) in some coordinate chart A, and then transform it to another chart B, you get the same result as if you had computed it in B originally.
+In general, one can often verify naturality on a case-by-case basis, by crunching through tedious change-of-basis formulas.
+In fact, this is what is done to check some of the basic objects in differential geometry.
+But this is tedious, and it doesn&rsquo;t suggest how one would come up with the natural objects in the first place.</p>
+<p>What differential geometry gives us is a set of high-level abstractions which allow us to construct natural objects directly.
+These include vector fields, tensor fields, Riemannian metrics, and differential forms, all discussed below.
+If you build an object out of these primitives in certain well-defined ways, it&rsquo;s automatically natural.</p>
+<p>How to start learning about differential geometry?  Basically everything depends on the <a href="tangent_bundle">tangent bundle</a>, the <a href="cotangent_bundle">cotangent bundle</a>, and <a href="tensor_fields_on_manifolds">tensor fields</a>, so you should learn about these first.
+The biggest hurdle  is making sense of the tangent bundle &ndash; it&rsquo;s not obvious how to define the &ldquo;tangent space&rdquo; at a point when the manifold isn&rsquo;t embedded in some Euclidean space.
+There are several constructions, which can be a bit abstract and non-intuitive.
+But after that, the definitions of cotangent spaces and tensors follow pretty easily.</p>
+<p>In machine learning, we often work with families of probability distributions.
+We can view a family of distributions as a manifold, called a <a href="statistical_manifolds">statistical manifold</a>, which gives a way of constructing natural objects.
+Most of the remainder of this roadmap focuses on statistical manifolds.</p>
+<h1 id="fisher-metric">Fisher metric</h1>
+<p>We often need a notion of distance between two points on a manifold. Unfortunately, there&rsquo;s no unique way to do this if all we have is a manifold. We need to assign an additional structure called a <a href="riemannian_metrics">Riemannian metric</a>, which (despite the name) is really an inner product on the tangent space at each point. Recall that inner products (e.g. the dot product) let us define notions like orthogonality, angles, and the length of a vector. Riemannian metrics let us define these things on tangent spaces. As a consequence, they also let us define the length of a path, which is why they are called metrics.</p>
+<p>The Riemannian metric which is typically used for statistical manifolds is the <a href="fisher_metric">Fisher metric</a>. Its coordinate representation is simply the <a href="fisher_information_matrix">Fisher information matrix</a>. What on earth does Fisher information have to do with distance?  Well, <a href="kl_divergence">KL divergence</a> is the most commonly used measure of dissimilarity between distributions (even though it isn&rsquo;t actually a distance metric). The Fisher information matrix is simply the Hessian of KL divergence at the point where two distributions are equal. Therefore, it gives a quadratic form which acts as a squared distance between two similar distributions &ndash;  exactly what we&rsquo;d want for a Riemannian metric. I wrote a <a href="https://hips.seas.harvard.edu/blog/2013/04/08/fisher-information/">blog post</a> which explains this in more detail.</p>
+<h2 id="natural-gradient">Natural gradient</h2>
+<p>Probably the most common application of the Fisher metric in machine learning is the <a href="natural_gradient">natural gradient</a>, an analogue of the gradient which is independent of the parameterization. This is a useful property to have for models like neural nets where the relationship between the parameters and the distribution can be very complex, making ordinary <a href="stochastic_gradient_descent">stochastic gradient descent</a> updates unstable. Essentially, they oscillate back and forth in directions where the distribution changes rapidly, and make only plodding progress in directions where it changes slowly.</p>
+<p>In differential geometry terms, what we normally call the gradient is really the differential. (See <a href="cotangent_bundle">cotangent bundle</a>.) The differential is a covector. A small update to the parameters, on the other hand, is a vector. Trying to equate the two is a type error, since they&rsquo;re completely different mathematical objects. But the Riemannian metric gives a way of converting a covector into a vector, known as &ldquo;raising indices.&rdquo; The natural gradient is just the differential with its index raised by the Fisher metric. Since it&rsquo;s constructed from natural objects, it&rsquo;s automatically independent of the parameterization.</p>
+<h2 id="cramer-rao-inequality">Cramer-Rao inequality</h2>
+<p>One of the first applications of the Fisher metric was the <a href="cramer_rao_bound">Cramer-Rao inequality</a>. The &ldquo;Fisher ball&rdquo; around some distribution p roughly corresponds to the set of distributions which are similar to p, in the sense of having small KL divergence. The Cramer-Rao inequality essentially says that if the data are drawn from p, then no matter how you estimate the distribution, you&rsquo;re probably going to confuse it with something else in the Fisher ball around p.</p>
+<h2 id="jeffreys-prior">Jeffreys prior</h2>
+<p>In <a href="bayesian_parameter_estimation">Bayesian parameter estimation</a>, you face the question of how to choose a prior distribution. If you have no knowledge specific to the problem, you might want to choose an <a href="uninformative_priors">uninformative prior</a>. The most obvious choice is the uniform distribution, and this is indeed the appropriate prior for location parameters (such as the mean of a Gaussian). But a uniform distribution in one coordinate system could be very much non-uniform in another one. Consider, e.g., the difference between uniform priors over the standard deviation or the precision of a Gaussian distribution. Evidently, these priors are not uninformative!</p>
+<p>The intuition behind the uniform distribution can be generalized, though. Consider why it seems like the obvious choice: it assigns equal probabilities to equal volumes. On manifolds, volumes are computed by <a href="integration_on_manifolds">integrating a volume form</a>. There&rsquo;s a natural way to construct a volume form from a Riemannian metric, and when this construction is applied to the Fisher metric, you arrive at the <a href="jeffreys_prior">Jeffreys prior</a>. This prior assigns equal probability to equal volumes on the statistical manifold.</p>
+<h1 id="exponential-families">Exponential families</h1>
+<p><a href="exponential_families">Exponential families</a> are a class of probability distributions that includes many widely used ones such as the <a href="gaussian_distribution">Gaussian</a>, Bernoulli, <a href="multinomial_distribution">multinomial</a>, <a href="gamma_distribution">gamma</a>, and <a href="poisson_distribution">Poisson</a> distributions. What&rsquo;s special about exponential families is that the distributions are log-linear in a vector of <em>sufficient statistics</em>. Every exponential family has two canonical parameterizations: the natural parameters, and the moments, or expected sufficient statistics. (For instance, in a <a href="multivariate_gaussian_distribution">multivariate Gaussian distribution</a>, the moments correspond to the first and second moments of the distribution, and the natural parameters are the <a href="multivariate_gaussians_information_form">information form</a> representation.) Maximum likelihood has a particularly <a href="maximum_likelihood_in_exponential_families">elegant form</a> for exponential families: simply set the model moments equal to the empirical moments.</p>
+<p>Don&rsquo;t be fooled by these simple examples: <a href="markov_random_fields">Markov random fields (MRFs)</a> are themselves a kind of exponential family. For discrete MRFs, the natural parameters are the log potentials, and the moments are the marginals. Much algorithmic research in MRFs is essentially a matter of converting between these two representations: <a href="inference_in_mrfs">inference</a> starts with the natural parameters and computes the moments, whereas <a href="mrf_parameter_learning">parameter learning</a> starts with a set of empirical moments (computed from the data) and finds a set of natural parameters which match them. Both of these problems are <a href="complexity_of_inference">intractable in the worst case</a>, which shows that converting between parameterizations isn&rsquo;t always as easy as the simple examples like Gaussians and multinomials would suggest.</p>
+<p>What&rsquo;s special about natural parameters and moments?  Might there be other equally good coordinate systems?  In differential geometry terms, natural parameters and moments are both flat coordinate systems. What this means is that there is a natural identification between the tangent spaces at different points. This isn&rsquo;t true for just any manifold: in general, tangent spaces at different points aren&rsquo;t directly relatable, and the closest thing to an equivalence is <a href="http://en.wikipedia.org/wiki/Parallel_transport">parallel transport</a>, which depends on the path taken. In flat coordinate systems, you can directly equate the coordinate representations of  vectors at two points. Straight lines also have a natural interpretation as geodesics on the manifolds; this is discussed in more detail in the next section.</p>
+<p>But natural parameters and moments aren&rsquo;t just flat spaces individually; they are dually flat, which is a very special kind of structure. Essentially it means that vectors in the natural parameters correspond to covectors in the moments, and vice versa. This leads to a lot of rather surprising identities, some of which I&rsquo;ve used in my own work. The geometry of exponential families is discussed in Chapters 2 and 3 of <a href="http://www.amazon.com/Information-Translations-Mathematical-Monographs-Tanslations/dp/0821843028/">Amari</a>.</p>
+<p>The other example of dually flat spaces (that I&rsquo;m aware of) is the <a href="http://en.wikipedia.org/wiki/Legendre_transform">Legendre transform</a>, which is discussed in Section 8.1 of Amari. (In a sense, this is really the same example, since the moments are the Legendre transform of the natural parameters.)</p>
+<p>A lot of machine learning problems involve simultaneously fitting a set of related distributions; for instance, topic modeling involves estimating distributions over words for each document in a collection. This can be done by jointly representing all the parameter vectors as a big matrix, and trying to factorize that matrix. But depending on which parameters you choose, you get a different model. <a href="probabilistic_lsa">Probabilistic latent semantic analysis (pLSA)</a> and its Bayesian successor, <a href="latent_dirichlet_allocation">latent Dirichlet allocation (LDA)</a>, factorize the moments representation, and have the interpretation that different topics combine additively in a document. <a href="http://machinelearning.wustl.edu/mlpapers/paper_files/nips02-AA27.pdf">Exponential family PCA</a>, on the other hand, factorizes the matrix of natural parameters; because the probabilities are log-linear in this representation, different topics combine multiplicatively.</p>
+<h1 id="geodesics">Geodesics</h1>
+<p>A lot of algorithms require us to interpolate between two probability distributions, i.e. define a sequence of distributions connecting the two such that each distribution is similar to its successor. Probably the most famous example is <a href="annealed_importance_sampling">annealed importance sampling (AIS)</a>, but others include <a href="http://arxiv.org/pdf/cond-mat/0012323">parallel tempering</a>, <a href="http://link.springer.com/content/pdf/10.1007/BF00143556.pdf">tempered transitions</a>, and <a href="http://www.jstor.org/stable/2676756">path sampling</a>.</p>
+<p>The most obvious kind of interpolation is a straight line in the space of model parameters. But unless the parameters have some meaningful relationship to the model&rsquo;s predictions, it&rsquo;s not clear why averaging them should give anything sensible. I wouldn&rsquo;t expect averaging the parameters of a feed-forward neural net to be very meaningful.</p>
+<p>On manifolds, you can define a natural analogue of straight lines called <a href="http://en.wikipedia.org/wiki/Geodesic">geodesics</a> &ndash; roughly, curves which keep heading in the &ldquo;same direction.&rdquo; Defining which directions are the same requires more structure than just a Riemannian metric &ndash; it requires an <a href="http://en.wikipedia.org/wiki/Affine_connection">affine connection</a>.</p>
+<p>As discussed in Chaper 2 of <a href="http://www.amazon.com/Information-Translations-Mathematical-Monographs-Tanslations/dp/0821843028/">Amari</a>, there is a natural family of connections on statistical manifolds called the alpha family, which is parameterized by a scalar alpha. For exponential families, if you plug in alpha = 1, the geodesics correspond to straight lines in the natural parameters. Hence, averaging natural parameters is intrinsically meaningful. In fact, it has a nice interpretation as taking geometric averages of the distributions.</p>
+<p>In my paper <a href="http://papers.nips.cc/paper/4879-annealing-between-distributions-by-averaging-moments">&ldquo;Annealing between distributions by averaging moments,&quot;</a> we look at various schemes for interpolating between exponential family distributions, with the aim of improving AIS. (<a href="http://www.metacademy.org/roadmaps/rgrosse/nips2013">Here</a> is some background for the paper.) In the paper, we tried to avoid differential geometry terminology for readability, but since this is a differential geometry roadmap, I&rsquo;ll focus on these connections.</p>
+<p>While geometric averages seem pretty intuitive, we show that it has certain pathologies which can seriously degrade performance. For instance, the geometric averages path connecting the following two black Gaussians is the path shown in red, where the dots represent equal time intervals. (The red Gaussian is the geometric mean.) This seems like an odd way to interpolate.</p>
+<img width="250px" class="center-image" src="https://i.imgur.com/KK9RskO.png" alt="Geometric averages path">
+<p>We show that, under certain idealized assumptions, you can measure the asymptotic performance of AIS in terms of a functional on the path known as the <a href="http://en.wikipedia.org/wiki/Geodesic#Riemannian_Geometry">energy</a>. Choosing an annealing schedule corresponds to moving along the path at varying speeds. The optimal (energy-minimizing) schedule covers equal distance in equal time, and the energy is the square of the Riemannian path length. (See <a href="riemannian_metrics">Riemannian metrics</a>.) The Riemannian path length (and hence the energy under the optimal schedule) can be visualized in terms of the number of Fisher balls the path crosses. Here is a visualization of path lengths for a univariate Gaussian parameterized in terms of mean and standard deviation:</p>
+<img width="500px" class="center-image" src="https://i.imgur.com/r7tcuQt.png" alt="Visualization of Riemannian path lengths">
+<p>The energy-minimizing paths are the geodesics under the <a href="http://en.wikipedia.org/wiki/Levi-civita_connection">Levi-Civita connetion</a>; this is shown in green. (The Levi-Civita connection is also the alpha connection for alpha = 0.) Unfortunately, finding these geodesics appears to be hard, likely even harder than the problem AIS was originally intended to solve (partition function estimation).</p>
+<p>But there&rsquo;s yet another interesting kind of geodesic for exponential families, corresponding to alpha = -1, which consists of averaging the moments of the distributions. We figured, if this is a natural path, why not try using it in AIS?  We found that it generally gives pretty sensible paths (shown in blue in the above figures), and seems to outperform geometric averages for estimating partition functions of RBMs. (The downside is that it is more expensive than geometric averages, since it reqiures MRF parameter estimation. But since the parameters don&rsquo;t need to be very accurate, you can use cheap approximations and still get good estimates faster than if you just used geometric averages.)</p>
+<p>Here&rsquo;s the moment averages path for the same multivariate Gaussians as above. Notice how it expands the variance in the direction connecting the two means, which increases the overlap between successive distributions:</p>
+<img width="250px" class="center-image" src="https://i.imgur.com/mgXgb0j.png" alt="Moment averages path">
+<p>Incidentally, <a href="http://papers.nips.cc/paper/4879-annealing-between-distributions-by-averaging-moments.pdf#page=5">Theorem 2</a> of the paper is the most surprising mathematical result I&rsquo;ve ever encountered in my research. It shows that the geometric and moment average paths, different as they might be, always have exactly the same energy!  The proof is very short, but I still have no intuition for why it should be true. There has to be something deep going on here&hellip;</p>
+<h1 id="hamiltonian-flows">Hamiltonian flows</h1>
+<p>As I mentioned, gradient descent can be unstable because it depends on the parameterization, and natural gradient is one way around this. But natural gradient can be expensive and tricky to implement. A simple and widely used alternative is <a href="https://www.cs.toronto.edu/~hinton/csc2515/notes/lec6tutorial.pdf#page=13">momentum</a>, where each update is a weighted average of the gradient and the previous update. Effectively, the weight vector is viewed as a particle, and the gradient acts as a &ldquo;force&rdquo; which causes it to accelerate in some direction. This method is popular because it requires only a few extra lines of code and adds almost no computational overhead.</p>
+<p>In <a href="http://www.metacademy.org/roadmaps/rgrosse/bayesian_machine_learning">Bayesian machine learning</a>, you often wish to sample from a posterior distribution rather than maximize a function. <a href="markov_chain_monte_carlo">Markov chain Monte Carlo (MCMC)</a> is a very general class of techniques for drawing approximate samples. Sampling from high-dimensional distributions requires finding the important modes of the distribution, i.e. finding regions of high probability. For this reason, MCMC algorithms are often designed to behave like algorithms from the optimization literature. E.g., <a href="annealed_importance_sampling">annealed importance sampling</a> (as discussed above) was based on <a href="http://en.wikipedia.org/wiki/Simulated_annealing">simulated annealing</a>.</p>
+<p><a href="hamiltonian_monte_carlo">Hamiltonian Monte Carlo (HMC)</a> is the MCMC analogue of gradient descent with momentum. It alternates between randomly sampling a momentum vector and performing a numerical simulation of Hamiltonian dynamics. HMC is one of the most successful MCMC algorithms, and is the workhorse behind <a href="http://mc-stan.org/">Stan</a>, a probabilistic programming language. The best reference on HMC is probably <a href="http://arxiv.org/pdf/1206.1901">Radford Neal&rsquo;s tutorial</a>.</p>
+<p>Translating an optimization algorithm into the framework of MCMC is rarely straightforward. One major hurdle is to ensure that the dynamics are reversible, i.e. that they satisfy a certain set of equations called <em>detailed balance</em>. This can always be achieved using the <a href="metropolis_hastings">Metropolis-Hastings (M-H)</a> algorithm, which accepts or rejects each proposed transition with certain probabilities chosen to achieve reversibility. Unfortunately, unless the proposals are designed very carefully, the sampler will either suffer from extremely small acceptance probabilities or take extremely small steps.</p>
+<p>HMC is an M-H algorithm which proposes very large steps, so we might ordinarily expect it to suffer from extremely small acceptance probabilities. But &ndash; and this is the insight that makes the algorithm work &ndash; it can be shown that the acceptance probability is close to 1 if the dynamics are simulated to high enough precision. This result is a consequence of two facts: that Hamiltonian dynamics conserves energy, and that it preserves volume in phase space.</p>
+<p>Similarly to the parameter invariance results discussed previously, these two facts can be verified by inspection, but they also follow from higher-level abstractions. In particular, suppose we have a manifold M which gives the position of a particle. The cotangent bundle T*M  can be viewed as a manifold in its own right. In general, the cotangent bundle can be parameterized in terms of a vector q which determines the point in M, and a second vector p which identifies a cotangent vector at q. In the context of Hamiltonian dynamics, the cotangent bundle is known as the <em>phase space</em>, and q and p correspond to the position and momentum coordinates, respectively.</p>
+<p>When viewed as a manifold, the cotangent bundle can be assigned a particular differential form called a symplectic form. This structure makes it a <a href="symplectic_manifolds">symplectic manifold</a>.</p>
+<p>Suppose we have a function f on T*M, which we&rsquo;ll refer to as the Hamiltonian. In the context of HMC, this corresponds to the sum of a potential energy (the negative log probability) and a kinetic energy. Recall that the differential of f is a covector field, so in order to get an update direction, we need to raise its index. When we raise it using the symplectic form, we get what&rsquo;s called the Hamiltonian vector field. The <a href="flows_on_manifolds">flow</a> for this vector field, the <a href="hamiltonian_flows">Hamiltonian flow</a>, corresponds to Hamiltonian dynamics. Interestingly, raising the index using the symplectic form is very different from raising it using a Riemannian metric; whereas the latter gives an ascent direction, the former gives a direction which <em>preserves</em> f. I.e., the Hamiltonian flow moves along the level sets of f.</p>
+<p>The fact that Hamiltonian flows preserve the Hamiltonian corresponds to the first property, conservation of energy. Similarly, it preserves volume, because it preserves the symplectic form and the volume form can be constructed from the symplectic form. Since these properties hold exactly for Hamiltonian flows, and HMC approximates Hamiltonian flows, we&rsquo;d expect them to hold approximately in the context of HMC. (In fact, volume preservation holds exactly, so it&rsquo;s only energy conservation that&rsquo;s approximate.)</p>
+<p>All of this is explained in <a href="http://arxiv.org/abs/1112.4118">this paper by Michael Betancourt</a>.</p>
+<p>While HMC is powerful, it still suffers from its dependence on the parameterization. Is there an analogue which is based on the intrinsic structure of statistical manifolds?  Yes there is &ndash;  <a href="http://www.dcs.gla.ac.uk/publications/PAPERS/9149/RMHMC_MG_BC_SC_07_09.pdf">Riemannian manifold HMC</a> is an algorithm that combines the insights of both natural gradient and HMC into a single algorithm.</p>
+
+            </div>
+        </article>
+    </main>
+</div>
+<footer class="footer">
+    
+
+    <div class="footer_social-icons">
+<a href="https://github.com/coolman-spaceman" target="_blank" rel="noopener noreferrer me" title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/coolman-spaceman/" target="_blank" rel="noopener noreferrer me" title="Linkedin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a></div>
+    
+</footer>
+<script src="https://coolman-spaceman.github.io/js/themeSwitchnMenu.min.f2fa3aed078bf5a7b612bf5548ddd0cb9891199ed24b5b673465df221e70bf4c.js"></script></body>
+</html>

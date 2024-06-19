@@ -4,17 +4,17 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">Introduction to K-Means | Dibyajyoti Jena</title>
-<meta property="og:title" content="Introduction to K-Means | Dibyajyoti Jena" />
-<meta name="twitter:title" content="Introduction to K-Means | Dibyajyoti Jena" />
-<meta itemprop="name" content="Introduction to K-Means | Dibyajyoti Jena" />
-<meta name="application-name" content="Introduction to K-Means | Dibyajyoti Jena" />
+<title itemprop="name">My Art Stuff | Dibyajyoti Jena</title>
+<meta property="og:title" content="My Art Stuff | Dibyajyoti Jena" />
+<meta name="twitter:title" content="My Art Stuff | Dibyajyoti Jena" />
+<meta itemprop="name" content="My Art Stuff | Dibyajyoti Jena" />
+<meta name="application-name" content="My Art Stuff | Dibyajyoti Jena" />
 <meta property="og:site_name" content="Awesome hugo blog" />
 
-<meta name="description" content="Minimal Hugo blog theme with light and dark mode support">
-<meta itemprop="description" content="Minimal Hugo blog theme with light and dark mode support" />
-<meta property="og:description" content="Minimal Hugo blog theme with light and dark mode support" />
-<meta name="twitter:description" content="Minimal Hugo blog theme with light and dark mode support" />
+<meta name="description" content="paint">
+<meta itemprop="description" content="paint" />
+<meta property="og:description" content="paint" />
+<meta name="twitter:description" content="paint" />
 
 <meta property="og:locale" content="en-us" />
 <meta name="language" content="en-us" />
@@ -33,7 +33,7 @@
 
   
 
-  <link rel="canonical" href="https://coolman-spaceman.github.io/lectures/lec1/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+  <link rel="canonical" href="https://coolman-spaceman.github.io/paint/"><link href="/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css" rel="stylesheet"><link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
 
   
 
@@ -131,7 +131,7 @@ stroke-linejoin="round" class="feather feather-home">
         
           <li>
             <a 
-            class="menu-link active"
+            class="menu-link "
             href="/lectures/">
             All Lin. Algebra
             </a>
@@ -140,7 +140,7 @@ stroke-linejoin="round" class="feather feather-home">
         
           <li>
             <a 
-            class="menu-link "
+            class="menu-link active"
             href="/paint/">
             Art Stuff
             </a>
@@ -174,84 +174,34 @@ stroke-linejoin="round" class="feather feather-home">
     <main class="page-content" aria-label="Content">
         <article>
             <header class="header">
-                <h1 class="header-title">Introduction to K-Means</h1>
+                <h1 class="header-title">My Art Stuff</h1>
                 
                 <div class="post-meta">
-                    <time datetime="2023-06-30T18:52:07&#43;05:30" itemprop="datePublished"> Jun 30, 2023 </time>
+                    <time datetime="2023-06-20T00:00:00&#43;00:00" itemprop="datePublished"> Jun 20, 2023 </time>
                 </div>
             </header>
             <div class="page-content">
-                <p>This tutorial assumes some familiarity with basic principles of machine learning, the math and code can be developed on the way.</p>
-<h1 id="machine-learning">Machine Learning</h1>
-<p>Learning can be <strong>Supervised, Unsupervised, Reinforced</strong> and <strong>Semi-supervised</strong>.</p>
-<blockquote>
-<p><strong>Reinforcement Learning</strong>: Learning with a critic, critic may be wrong at times, maybe stochastic, but different from supervisor in case of supervised learning. Supervisor gives feedback, critic only says yes or no.</p>
-</blockquote>
-<h3 id="k-means-algorithm">K-Means algorithm:</h3>
-<ol>
-<li>K as a parameter</li>
-<li>distance threshold as a parameter</li>
-</ol>
-<p>K means crisp decision boundary: grading, fingerprint ROI(Region of Interest)</p>
-<blockquote>
-<p>Reinforcement learning correspinds to lifelong learning, much like our biological learning process.</p>
-</blockquote>
-<p>For crisp decision boundary, some error is always there and is acceptable, but try to minimize the error.</p>
-<p>Fuzzy decision boundary: signal noise separation, decision boundary is not well defined</p>
-<p>Threshold could be crisp or noisy.</p>
-<hr>
-<hr>
-<h4 id="algorithms">Algorithms:</h4>
-<ol>
-<li>
-<p>Polynomial time O(n<sup>k</sup>): size of inut is n, number of steps is n<sup>k</sup>, eg: sorting, FFT</p>
-</li>
-<li>
-<p>Exponential time O(k<sup>n</sup>): size of inut is n, number of steps is k<sup>n</sup>, Travelling salesman problem</p>
-</li>
-<li>
-<p>Ugly: Optimal but takes infinite time</p>
-</li>
-</ol>
-<hr>
-<hr>
-<h4 id="k-means">K Means</h4>
-<ul>
-<li>
-<p>N points can be divided into K clusters, each point has D dimensions</p>
-</li>
-<li>
-<p>u<sub>j</sub> is mean of the jth cluster</p>
-</li>
-<li>
-<p>such that the sum of square distances of each data point to its closest vector u<sub>j</sub> is minimum.</p>
-</li>
-<li>
-<p>Vector quantizatoin: u<sub>j</sub> -&gt; points</p>
-</li>
-<li>
-<p>Objective function: distortion measure or cost function
-\begin{equation}
-J = \sum_{i = 1}^{N}\sum_{j = 1}^{K} r_{ij} \left |x_i - u_j \right |^2
-\end{equation}</p>
-</li>
-<li>
-<p>Not taking abs or mod because mod is not differentiable and thus avoided during optimization.</p>
-</li>
-<li>
-<p>r <sub>ij</sub> is a binary indicator variable: 1 if the ith data point is assigned to the jth cluster, 0 otherwise.</p>
-</li>
-</ul>
-<p>In total there are N data points and K clusters.</p>
-<ul>
-<li>Find {r<sub>ij</sub>} and {u<sub>j</sub>} such that J is minimised.</li>
-</ul>
-<p>To solve use: <strong>Expectation Maximization framework</strong> or <strong>EM method</strong>.</p>
-<p>Randomly choose K initial clusters with means u<sub>j</sub>.</p>
-<ol>
-<li>Fixed u<sub>j</sub>, find assignment r<sub>ij</sub>.</li>
-<li>Take avg of x<sub>ij</sub> to find new u<sub>j</sub>, repeat from 1.</li>
-</ol>
+                <h3 id="digital-painting-inspired-from-ninja-arashi-video-game">Digital painting inspired from Ninja Arashi video game</h3>
+<figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/paintings/ninja.jpg" width="800">
+</div>
+</figure>
+<h3 id="a-very-bad-doodle-of-van-goghs-starry-night">A very bad doodle of vAN gOGH&rsquo;S Starry Night</h3>
+<figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/paintings/star.jpg" width="600">
+</div>
+</figure>
+<h3 id="doodle-of-a-wolf-while-in-some-random-classroom">Doodle of a wolf, while in some random classroom</h3>
+<figure>
+ <div class="column">
+    <p align="center">
+<img class=scaled src="/paintings/wolf.jpg" width="500">
+</div>
+</figure>
 
             </div>
         </article>

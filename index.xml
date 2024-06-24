@@ -6,7 +6,16 @@
     <description>Recent content in Home on Dibyajyoti Jena</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Feb 2024 12:48:06 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jun 2024 19:12:48 +0530</lastBuildDate><atom:link href="https://coolman-spaceman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Retinal Fundus Image Enhancement With Image Decomposition</title>
+      <link>https://coolman-spaceman.github.io/projects/retina/</link>
+      <pubDate>Fri, 21 Jun 2024 19:12:48 +0530</pubDate>
+      
+      <guid>https://coolman-spaceman.github.io/projects/retina/</guid>
+      <description>Retinal fundus photography is a non-invasive method to check for symptoms and other features related to diseases like diabetic retinopathy, age-related macular degeneration, cardiovascular disease. The main features to look out for are the vascular structure, lesions, optic disc, microaneurysms, etc. These depend on high quality fundus images to be processed properly. However, many such images are clinically unsatisfactory because of human error and electronic noise in the imaging instrument. The main problems are: non-uniform illumination, low contrast and noise.</description>
+    </item>
+    
     <item>
       <title>Differential geometry for machine learning</title>
       <link>https://coolman-spaceman.github.io/posts/post5/</link>
